@@ -11,8 +11,8 @@ const char* password = ""; // should be empty for guest network
 String client_id = "";
 String client_secret = "";
 
-#define DHTPIN D5 //TODO: change to NodeMCU pin
-#define DHTTYPE DHT22 //TODO: test with DTH11
+#define DHTPIN D5
+#define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
 
 String accessToken = "";
