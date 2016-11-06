@@ -45,6 +45,9 @@ void loop() {
   delay(30000);
 }
 
+//check fingerprint with
+//echo | openssl s_client -connect api.yaas.io:443 |& openssl x509 -fingerprint -noout
+
 void saveDTH(float t, float h) {
   HTTPClient http;
   http.begin("https://api.yaas.io/hybris/document/v1/iotexp/iotexp.demoapp/data/test", "DC B1 97 59 84 9D DB 76 F0 ED 7F 40 FC 0E 32 59 4F C3 AA 66");
@@ -88,5 +91,3 @@ void getAccessToken() {     //because of https://github.com/esp8266/Arduino/issu
   Serial.flush();
   http.end();
 }
-
-
