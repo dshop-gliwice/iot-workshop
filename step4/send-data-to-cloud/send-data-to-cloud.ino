@@ -49,10 +49,10 @@ void loop() {
 //echo | openssl s_client -connect api.yaas.io:443 |& openssl x509 -fingerprint -noout
 
 void saveDTH(float t, float h) {
-  HTTPClient http;
-  http.begin("https://api.yaas.io/hybris/document/v1/iotexp/iotexp.demoapp/data/test", "DC B1 97 59 84 9D DB 76 F0 ED 7F 40 FC 0E 32 59 4F C3 AA 66");
-  http.addHeader("Content-Type", "application/json");
-  http.addHeader("Authorization", accessToken);
+  HTTPClient client;
+  client.begin("https://api.yaas.io/hybris/document/v1/iotexp/iotexp.demoapp/data/test", "DC B1 97 59 84 9D DB 76 F0 ED 7F 40 FC 0E 32 59 4F C3 AA 66");
+  client.addHeader("Content-Type", "application/json");
+  client.addHeader("Authorization", accessToken);
 
   StaticJsonBuffer<200> jsonBuffer;
   JsonObject& root = jsonBuffer.createObject();
@@ -61,33 +61,33 @@ void saveDTH(float t, float h) {
 
   String json;
   root.printTo(json);
-  int httpCode = http.POST(json);
-  if (httpCode > 0) {
+  int httpCode = client.POST(json);
+  if (httpCode == 201) {
     Serial.println("POST request succeeded");
   } else {
-    Serial.printf("[HTTP] POST... failed, error: %s\n", http.errorToString(httpCode).c_str());
+    Serial.printf("[HTTP] POST... failed, error: %s\n", client.errorToString(httpCode).c_str());
   }
   Serial.flush();
-  http.end();
+  client.end();
 }
 
 void getAccessToken() {     //because of https://github.com/esp8266/Arduino/issues/2335
-  HTTPClient http;
-  http.begin("https://api.yaas.io/hybris/oauth2/v1/token", "DC B1 97 59 84 9D DB 76 F0 ED 7F 40 FC 0E 32 59 4F C3 AA 66");
-  http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+  HTTPClient client;
+  client.begin("https://api.yaas.io/hybris/oauth2/v1/token", "DC B1 97 59 84 9D DB 76 F0 ED 7F 40 FC 0E 32 59 4F C3 AA 66");
+  client.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
-  int httpCode = http.POST("client_id=" + client_id + "&client_secret=" + client_secret + "&grant_type=client_credentials&scope=hybris.document_view%20hybris.document_manage");
+  int httpCode = client.POST("client_id=" + client_id + "&client_secret=" + client_secret + "&grant_type=client_credentials&scope=hybris.document_view%20hybris.document_manage");
 
-  if (httpCode > 0) {
-    String json = http.getString();
+  if (httpCode == 200) {
+    String json = client.getString();
     StaticJsonBuffer<300> jsonBuffer;
     JsonObject& root = jsonBuffer.parseObject(json);
     String token_type = root["token_type"];
     String token = root["access_token"];
     accessToken = token_type + " " + token;
   } else {
-    Serial.printf("Token request failed, error: %s\n", http.errorToString(httpCode).c_str());
+    Serial.printf("Token request failed, error: %s\n", client.errorToString(httpCode).c_str());
   }
   Serial.flush();
-  http.end();
+  client.end();
 }
