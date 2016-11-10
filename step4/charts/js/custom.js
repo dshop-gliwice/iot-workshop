@@ -111,9 +111,8 @@ function updateChart(data){
 
   $.each( data, function( key, val ) {
     xArray.push(new Date(val.metadata.createdAt))
-    tempArray.push(val.temperature)
-    humArray.push(val.humidity)
-    console.log(val.temperature)
+    tempArray.push(val.t)
+    humArray.push(val.h)
   });
   app.chart.load({
     columns: [
