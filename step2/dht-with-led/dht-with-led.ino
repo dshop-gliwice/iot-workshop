@@ -12,6 +12,8 @@ void setup() {
   Serial.begin(115200);
   dht.begin(); // Initialize device.
   Serial.println("DHT1 Example");
+
+  pinMode(BUILTIN_LED, OUTPUT);
 }
 
 void loop() {
@@ -25,6 +27,12 @@ void loop() {
   Serial.print("Temperature: ");
   Serial.print(t);
   Serial.println(" *C");
+  
+  if(t<28.0){
+    digitalWrite(BUILTIN_LED, HIGH);      
+  }else{
+    digitalWrite(BUILTIN_LED, LOW); 
+  }
 
   delay(delayMS);
 }
