@@ -29,3 +29,8 @@ Search and install:
  - Adafruit Unified Sensor
  - Adafruit DHT Unified
  - ArduinoJson
+ 
+
+4. Install REST client for communication with cloud
+We suggest to install Postman (from chrome web store). But you can use any other client you like.
+
