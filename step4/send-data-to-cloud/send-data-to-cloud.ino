@@ -23,6 +23,7 @@ void setup() {
   Serial.print("Connecting to ");
   Serial.println(ssid);
   Serial.flush();
+  WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(250);
