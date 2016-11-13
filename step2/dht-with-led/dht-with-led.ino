@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include <DHT.h>
 
 #define DHTPIN            D4         // Pin which is connected to the DHT sensor.
