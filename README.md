@@ -26,7 +26,7 @@ https://www.arduino.cc/en/Main/Software
 
 Go to Sketch > Include Library > Manage Libraries
 Search and install:
- - Adafruit Unified Sensor
+ - DHT sensor library
  - Adafruit DHT Unified
  - ArduinoJson
 
