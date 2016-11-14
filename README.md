@@ -26,10 +26,12 @@ https://www.arduino.cc/en/Main/Software
 
 Go to Sketch > Include Library > Manage Libraries
 Search and install:
- - Adafruit Unified Sensor
+ - Adafruit Unified Sensor based libraries
  - DHT sensor library
  - ArduinoJson
 
+### Install USB drivers
+ - OSX: [Install driver](tools/drivers/osx/osx-vcp-driver.zip)
 
 ### Install REST client for communication with cloud
 We suggest to install Postman (from chrome web store). But you can use any other client you like and know how to use.
