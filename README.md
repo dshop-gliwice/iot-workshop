@@ -16,13 +16,13 @@ All steps have to be performed before workshop!
 ### Arduino
 
 #### Install Arduino IDE
-https://www.arduino.cc/en/Main/Software - choose your operating system in menu on the right side, on next page click "Just download"
+https://www.arduino.cc/en/Main/Software - choose your operating system in the menu on the right side, on next page click "Just download"
 
 #### Add NodeMCU board
 
 - run Arduino
-- go to [File > Preferences](tools/screenshots/boards_manager.png?raw=true) and paste "http://arduino.esp8266.com/staging/package_esp8266com_index.json" into Additional Board Manager URLs", save changes
-- go to Tools > Board > [Boards Manager](tools/screenshots/preferences.png?raw=true), search for ESP8266, click on it and Install  
+- go to [File > Preferences](tools/screenshots/preferences.png?raw=true) and paste "http://arduino.esp8266.com/staging/package_esp8266com_index.json" into Additional Board Manager URLs", save changes
+- go to Tools > Board > [Boards Manager](tools/screenshots/boards_manager.png?raw=true), search for ESP8266, click on it and Install  
 
 #### Add libraries
 
