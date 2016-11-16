@@ -10,28 +10,36 @@ Work is split to four parts (steps):
 - HTTP calls
 - connection to cloud - Yaas
 
+## Requirements !!!
+All steps have to be performed before workshop!
 
-## Requirements
+### Arduino
 
-### Install Arduino IDE
-https://www.arduino.cc/en/Main/Software
+#### Install Arduino IDE
+https://www.arduino.cc/en/Main/Software - choose your operating system in menu on the right side, on next page click "Just download"
 
-### Add NodeMCU board
+#### Add NodeMCU board
 
 - run Arduino
-- go to File > Preferences and "http://arduino.esp8266.com/staging/package_esp8266com_index.json" to Additional Board Manager URLs, save changes
-- go to Tools > Board > Boards Manager, search for ESP8266, click on it and Install
+- go to [File > Preferences](tools/screenshots/boards_manager.png?raw=true) and paste "http://arduino.esp8266.com/staging/package_esp8266com_index.json" into Additional Board Manager URLs", save changes
+- go to Tools > Board > [Boards Manager](tools/screenshots/preferences.png?raw=true), search for ESP8266, click on it and Install  
 
-### Add libraries
+#### Add libraries
 
-Go to Sketch > Include Library > Manage Libraries
-Search and install:
- - Adafruit Unified Sensor based libraries
- - DHT sensor library
- - ArduinoJson
+Go to Sketch > Include Library > [Manage Libraries](tools/screenshots/library_manager.png?raw=true)
+Search and install 3 packages (paste it exactly like it is):
+ - "Adafruit Unified Sensor based libraries"
+ - "DHT sensor library"
+ - "ArduinoJson"
 
-### Install USB drivers
- - OSX: [Install driver](tools/drivers/osx/osx-vcp-driver.zip)
+#### USB drivers
+ - OSX: [Install driver](tools/drivers/osx/osx-vcp-driver.zip?raw=true)
+ - Windows: driver is build in
 
 ### Install REST client for communication with cloud
-We suggest to install Postman (from chrome web store). But you can use any other client you like and know how to use.
+We suggest to install Postman from [chrome web store](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop). You can use any other client you like and know how to use.
+
+### Yaas
+
+1. Create Yaas account - https://www.yaas.io/register/ - use the same email address that you used in workshop registration form
+2. Before workshop we'll send you invitation to join our IoT Workshop Project
