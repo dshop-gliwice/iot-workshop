@@ -36,9 +36,6 @@ Search and install 3 packages (paste it exactly like it is):
  - OSX: [Install driver](tools/drivers/osx/osx-vcp-driver.zip?raw=true)
  - Windows: driver is build in
 
-### Install REST client for communication with cloud
-We suggest to install Postman from [chrome web store](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop). You can use any other client you like and know how to use.
-
 ### Yaas
 
 1. Create Yaas account - https://www.yaas.io/register/ - use the same email address that you used in workshop registration form
