@@ -22,7 +22,7 @@ void setup() {
     delay(250);
     Serial.print(".");
   }
-  Serial.println();
+  Serial.println("WIFI connected!");
 }
 
 void loop() {
@@ -46,6 +46,7 @@ void getAccessToken() {     //because of https://github.com/esp8266/Arduino/issu
     String token_type = root["token_type"];
     String token = root["access_token"];
     accessToken = token_type + " " + token;
+    Serial.printf("Received token %s\n", token.c_str());
   } else {
     Serial.printf("Token request failed, error: %s\n", client.errorToString(httpCode).c_str());
   }
