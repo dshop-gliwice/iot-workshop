@@ -41,6 +41,7 @@ void getAccessToken() {     //because of https://github.com/esp8266/Arduino/issu
 
   if (httpCode == 200) {
     String json = client.getString();
+    Serial.println(json);
     StaticJsonBuffer<300> jsonBuffer;
     JsonObject& root = jsonBuffer.parseObject(json);
     String token_type = root["token_type"];

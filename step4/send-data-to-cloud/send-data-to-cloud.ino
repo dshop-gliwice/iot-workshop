@@ -39,7 +39,12 @@ void loop() {
 
     float h = dht.readHumidity();
     float t = dht.readTemperature();
-    saveDTH(t, h);
+
+    if (isnan(h) || isnan(t)) {
+      Serial.println("Failed to read from DHT sensor!");
+    } else {
+      saveDTH(t, h);
+    }
   }
   delay(20000);
 }
@@ -49,16 +54,16 @@ void loop() {
 
 void saveDTH(float t, float h) {
   HTTPClient client;
-  client.begin("https://api.yaas.io/hybris/document/v1/iotexp/iotexp.demoapp/data/test", 
+  client.begin("https://api.yaas.io/hybris/document/v1/iotexp/iotexp.demoapp/data/test",
                "DC B1 97 59 84 9D DB 76 F0 ED 7F 40 FC 0E 32 59 4F C3 AA 66");
   client.addHeader("Content-Type", "application/json");
   client.addHeader("Authorization", accessToken);
 
-  if (isnan(h) || isnan(t)){
+  if (isnan(h) || isnan(t)) {
     Serial.println("Failed to read from DHT sensor!");
     return;
   }
-  
+
   StaticJsonBuffer<200> jsonBuffer;
   JsonObject& root = jsonBuffer.createObject();
   root["t"] = t;
@@ -82,13 +87,13 @@ void saveDTH(float t, float h) {
 
 void getAccessToken() {     //because of https://github.com/esp8266/Arduino/issues/2335
   HTTPClient client;
-  client.begin("https://api.yaas.io/hybris/oauth2/v1/token", 
+  client.begin("https://api.yaas.io/hybris/oauth2/v1/token",
                "DC B1 97 59 84 9D DB 76 F0 ED 7F 40 FC 0E 32 59 4F C3 AA 66`");
   client.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
-  int httpCode = client.POST("client_id=" + client_id + 
-                            "&client_secret=" + client_secret + 
-                            "&grant_type=client_credentials&scope=hybris.document_view%20hybris.document_manage");
+  int httpCode = client.POST("client_id=" + client_id +
+                             "&client_secret=" + client_secret +
+                             "&grant_type=client_credentials&scope=hybris.document_view%20hybris.document_manage");
 
   if (httpCode == 200) {
     String json = client.getString();
