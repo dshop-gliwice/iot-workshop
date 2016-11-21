@@ -35,14 +35,14 @@ void setup() {
 
 void loop() {
   if (WiFi.status() == WL_CONNECTED) {
-    getAccessToken();
-
+    
     float h = dht.readHumidity();
     float t = dht.readTemperature();
 
     if (isnan(h) || isnan(t)) {
       Serial.println("Failed to read from DHT sensor!");
     } else {
+      getAccessToken();
       saveDTH(t, h);
     }
   }
@@ -58,11 +58,6 @@ void saveDTH(float t, float h) {
                "DC B1 97 59 84 9D DB 76 F0 ED 7F 40 FC 0E 32 59 4F C3 AA 66");
   client.addHeader("Content-Type", "application/json");
   client.addHeader("Authorization", accessToken);
-
-  if (isnan(h) || isnan(t)) {
-    Serial.println("Failed to read from DHT sensor!");
-    return;
-  }
 
   StaticJsonBuffer<200> jsonBuffer;
   JsonObject& root = jsonBuffer.createObject();
